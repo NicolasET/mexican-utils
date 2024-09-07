@@ -1,48 +1,47 @@
-const GENDERS = {
-  MALE: "H",
-  FEMALE: "M",
+export const GENDERS = {
+  male: "H",
+  female: "M",
 } as const;
 
-export type Gender = (typeof GENDERS)[keyof typeof GENDERS];
+export type Gender = keyof typeof GENDERS;
 
-const STATES = {
-  AGUASCALIENTES: "AS",
-  BAJA_CALIFORNIA: "BC",
-  BAJA_CALIFORNIA_SUR: "BS",
-  CAMPECHE: "CC",
-  COAHUILA: "CL",
-  COLIMA: "CM",
-  CHIAPAS: "CS",
-  CHIHUAHUA: "CH",
-  DISTRITO_FEDERAL: "DF",
-  CDMX: "DF",
-  DURANGO: "DG",
-  GUANAJUATO: "GT",
-  GUERRERO: "GR",
-  HIDALGO: "HG",
-  JALISCO: "JC",
-  ESTADO_DE_MEXICO: "MC",
-  NO_ESPECIFICADO: "NE",
-  MICHOACAN: "MN",
-  MORELOS: "MS",
-  NAYARIT: "NT",
-  NUEVO_LEON: "NL",
-  OAXACA: "OC",
-  PUEBLA: "PL",
-  QUERETARO: "QT",
-  QUINTANA_ROO: "QR",
-  SAN_LUIS_POTOSI: "SP",
-  SINALOA: "SL",
-  SONORA: "SR",
-  TABASCO: "TC",
-  TAMAULIPAS: "TS",
-  TLAXCALA: "TL",
-  VERACRUZ: "VZ",
-  YUCATAN: "YN",
-  ZACATECAS: "ZS",
+export const STATES = {
+  aguascalientes: "AS",
+  baja_california: "BC",
+  baja_california_sur: "BS",
+  campeche: "CC",
+  chiapas: "CS",
+  chihuahua: "CH",
+  ciudad_de_méxico: "DF",
+  coahuila_de_zaragoza: "CL",
+  colima: "CM",
+  durango: "DG",
+  guanajuato: "GT",
+  guerrero: "GR",
+  hidalgo: "HG",
+  jalisco: "JC",
+  méxico: "MC",
+  michoacán_de_ocampo: "MN",
+  morelos: "MS",
+  nayarit: "NT",
+  nuevo_león: "NL",
+  oaxaca: "OC",
+  puebla: "PL",
+  querétaro: "QT",
+  quintana_roo: "QR",
+  san_luis_potosí: "SP",
+  sinaloa: "SL",
+  sonora: "SR",
+  tabasco: "TC",
+  tamaulipas: "TS",
+  tlaxcala: "TL",
+  veracruz_de_ignacio_de_la_llave: "VZ",
+  yucatán: "YN",
+  zacatecas: "ZS",
+  no_especificado: "NE",
 } as const;
 
-export type State = (typeof STATES)[keyof typeof STATES];
+export type State = keyof typeof STATES;
 
 const COMMON_NAMES = [
   "MARIA DEL ",
@@ -56,7 +55,7 @@ const COMMON_NAMES = [
   "J. ",
   "J ",
   "M ",
-];
+] as const;
 
 const BAD_WORDS: Record<string, string> = {
   BACA: "BXCA",
@@ -140,7 +139,7 @@ const BAD_WORDS: Record<string, string> = {
   VUEY: "VXEY",
   WUEI: "WXEI",
   WUEY: "WXEY",
-};
+} as const;
 
 /**
  * Removes propositions, contractions, or conjunctions from a compound name or surname

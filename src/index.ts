@@ -4,6 +4,7 @@ import {
   calculateVerificationDigit,
   findFirstConsonant,
   Gender,
+  GENDERS,
   getPrimaryName,
   getSpecialChar,
   normalizeString,
@@ -11,6 +12,7 @@ import {
   replaceBadWords,
   replaceNonAlphabetic,
   State,
+  STATES,
 } from "./utils";
 
 dayjs.extend(customParseFormat);
@@ -22,7 +24,7 @@ dayjs.extend(customParseFormat);
  * letters and numbers based on the person's names, birth date, gender, and state.
  * @param {string} name The full name.
  * @param {string} paternalSurname The first surname (last name).
- * @param {Gender} gender The gender ('H' for male, 'M' for female).
+ * @param {Gender} gender The gender.
  * @param {State} state The state code.
  * @param {string | number | Date} birthDate The date of birth in YYYY-MM-DD format.
  * @param {string} [maternalSurname=""] The second surname (last name).
@@ -92,8 +94,8 @@ export const createCURP = (
     year,
     month,
     day,
-    gender,
-    state,
+    GENDERS[gender],
+    STATES[state],
     consonants,
     getSpecialChar(fullYear),
   ].join("");
