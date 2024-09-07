@@ -8,11 +8,12 @@ export * from "./curp-utils";
  * @returns {string} The normalized string.
  */
 export const normalizeString = (input: string) => {
-  return input
-    .toLowerCase()
-    .trim()
-    .normalize("NFD") // Decompose combined graphemes into their component parts.
-    .replace(/[\u0300-\u036f]/g, ""); // Remove diacritical marks (accents).
+	return input
+		.toLowerCase()
+		.trim()
+		.normalize("NFD") // Decompose combined graphemes into their component parts.
+		// biome-ignore lint/suspicious/noMisleadingCharacterClass: <explanation>
+		.replace(/[\u0300-\u036f]/g, ""); // Remove diacritical marks (accents).
 };
 
 /**
@@ -22,7 +23,7 @@ export const normalizeString = (input: string) => {
  * @returns {string} The processed string with non-alphabetic characters replaced by the specified replacement string.
  */
 export const replaceNonAlphabetic = (input: string, replacement = "X") => {
-  return input.replace(/[\d_\-./\\,]/g, replacement);
+	return input.replace(/[\d_\-./\\,]/g, replacement);
 };
 
 /**
@@ -32,13 +33,13 @@ export const replaceNonAlphabetic = (input: string, replacement = "X") => {
  * @returns {string} The first consonant found or 'X' if no consonant is present.
  */
 export const findFirstConsonant = (input: string): string => {
-  const internalConsonant = input
-    .substring(1) // Skip the first character
-    .replace(/[AEIOU]/gi, "") // Remove vowels
-    .charAt(0) // Get the first character (after removal)
-    .trim(); // Trim any whitespace
+	const internalConsonant = input
+		.substring(1) // Skip the first character
+		.replace(/[AEIOU]/gi, "") // Remove vowels
+		.charAt(0) // Get the first character (after removal)
+		.trim(); // Trim any whitespace
 
-  return internalConsonant === "" || internalConsonant === "Ñ"
-    ? "X"
-    : internalConsonant;
+	return internalConsonant === "" || internalConsonant === "Ñ"
+		? "X"
+		: internalConsonant;
 };
