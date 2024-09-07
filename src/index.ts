@@ -15,6 +15,20 @@ import {
 
 dayjs.extend(customParseFormat);
 
+/**
+ * Creates a CURP (Clave Única de Registro de Población) based on the provided
+ * personal information and birth date.
+ * The CURP format follows specific rules regarding the arrangement of
+ * letters and numbers based on the person's names, birth date, gender, and state.
+ * @param {string} name The full name.
+ * @param {string} paternalSurname The first surname (last name).
+ * @param {Gender} gender The gender ('H' for male, 'M' for female).
+ * @param {State} state The state code.
+ * @param {string | number | Date} birthDate The date of birth in YYYY-MM-DD format.
+ * @param {string} [maternalSurname=""] The second surname (last name).
+ * @returns {string} The generated CURP string.
+ * @throws {Error} Throws an error if the date of birth has an incorrect format.
+ */
 export const createCURP = (
   name: string,
   paternalSurname: string,
@@ -66,7 +80,6 @@ export const createCURP = (
       findFirstConsonant(getPrimaryName(cName)),
     ].join("")
   );
-  console.log(consonants)
 
   const parsedBirthDate = dayjs(birthDate);
   const day = parsedBirthDate.format("DD");
