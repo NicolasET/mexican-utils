@@ -44,6 +44,7 @@ export const createCURP = (
 			"The date of birth is an invalid date or is in an invalid format.",
 		);
 	}
+
 	const cName = removeCompoundWords(normalizeString(name).toUpperCase());
 	const cPaternalSurname = removeCompoundWords(
 		normalizeString(paternalSurname).toUpperCase(),

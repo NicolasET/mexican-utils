@@ -8,12 +8,14 @@ export * from "./curp-utils";
  * @returns {string} The normalized string.
  */
 export const normalizeString = (input: string) => {
-	return input
-		.toLowerCase()
-		.trim()
-		.normalize("NFD") // Decompose combined graphemes into their component parts.
-		// biome-ignore lint/suspicious/noMisleadingCharacterClass: <explanation>
-		.replace(/[\u0300-\u036f]/g, ""); // Remove diacritical marks (accents).
+	return (
+		input
+			.toLowerCase()
+			.trim()
+			.normalize("NFD") // Decompose combined graphemes into their component parts.
+			// biome-ignore lint/suspicious/noMisleadingCharacterClass: <explanation>
+			.replace(/[\u0300-\u036f]/g, "")
+	); // Remove diacritical marks (accents).
 };
 
 /**
