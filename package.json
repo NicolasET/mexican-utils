@@ -1,6 +1,6 @@
 {
 	"name": "mexican-utils",
-	"version": "1.2.1",
+	"version": "1.2.2",
 	"description": "library that handles validations for several Mexican related fields",
 	"main": "./dist/index.js",
 	"module": "./dist/index.mjs",
