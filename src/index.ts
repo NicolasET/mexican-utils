@@ -1,18 +1,33 @@
+import dayjs from "dayjs";
+import customParseFormat from "dayjs/plugin/customParseFormat";
 import {
+  calculateVerificationDigit,
+  findFirstConsonant,
   Gender,
   getPrimaryName,
+  getSpecialChar,
   normalizeString,
   removeCompoundWords,
+  replaceBadWords,
+  replaceNonAlphabetic,
   State,
 } from "./utils";
 
-const createCURP = (
+dayjs.extend(customParseFormat);
+
+export const createCURP = (
   name: string,
   paternalSurname: string,
-  maternalSurname = "",
   gender: Gender,
-  state: State
+  state: State,
+  birthDate: string | number | Date,
+  maternalSurname = ""
 ) => {
+  if (!dayjs(birthDate, "YYYY-MM-DD", true).isValid()) {
+    throw new Error(
+      "The date of birth is an invalid date or is in an invalid format."
+    );
+  }
   const cName = removeCompoundWords(normalizeString(name).toUpperCase());
   const cPaternalSurname = removeCompoundWords(
     normalizeString(paternalSurname).toUpperCase()
@@ -22,6 +37,7 @@ const createCURP = (
   );
 
   const letterName = getPrimaryName(cName).charAt(0);
+
   const vowelPaternalSurname =
     cPaternalSurname
       .substring(1) // Skip the first character
@@ -29,9 +45,46 @@ const createCURP = (
 
   const letterPaternalSurname =
     cPaternalSurname.charAt(0) === "Ñ" ? "X" : cPaternalSurname.charAt(0);
-  let letterMaternalSurname = maternalSurname.charAt(0) || "X";
+  let letterMaternalSurname = cMaternalSurname.charAt(0) || "X"; // If empty string (falsy)
   letterMaternalSurname =
     letterMaternalSurname === "Ñ" ? "X" : letterMaternalSurname;
+
+  const firstCompositionJoin = [
+    letterPaternalSurname,
+    vowelPaternalSurname,
+    letterMaternalSurname,
+    letterName,
+  ].join("");
+  const firstComposition = replaceBadWords(
+    replaceNonAlphabetic(firstCompositionJoin)
+  );
+
+  const consonants = replaceNonAlphabetic(
+    [
+      findFirstConsonant(cPaternalSurname),
+      findFirstConsonant(cMaternalSurname),
+      findFirstConsonant(getPrimaryName(cName)),
+    ].join("")
+  );
+  console.log(consonants)
+
+  const parsedBirthDate = dayjs(birthDate);
+  const day = parsedBirthDate.format("DD");
+  const month = parsedBirthDate.format("MM");
+  const year = parsedBirthDate.format("YY");
+  const fullYear = parsedBirthDate.format("YYYY");
+
+  const incompleteCURP = [
+    firstComposition,
+    year,
+    month,
+    day,
+    gender,
+    state,
+    consonants,
+    getSpecialChar(fullYear),
+  ].join("");
+  return [incompleteCURP, calculateVerificationDigit(incompleteCURP)].join("");
 };
 
 /**
