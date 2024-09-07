@@ -1,40 +1,38 @@
 {
-  "name": "mexican-utils",
-  "version": "1.2.1",
-  "description": "library that handles validations for several Mexican related fields",
-  "main": "dist/index.js",
-  "module":"esm/index.js",
-  "typings": "dist/index.d.ts",
-  "scripts": {
-    "build": "tsc",
-    "build:esm": "tsc --module commonjs --outDir dist",
-    "build:cjs": "tsc --module esnext --outDir esm",
-    "test": "jest",
-    "format": "biome format --write ./src",
-    "lint": "biome lint --write ./src"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/NicolasET/mexican-utils.git"
-  },
-  "keywords": [
-    "rfc",
-    "curp"
-  ],
-  "author": "Nicolas Escobar Tellez",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/NicolasET/mexican-utils/issues"
-  },
-  "homepage": "https://github.com/NicolasET/mexican-utils#readme",
-  "devDependencies": {
-    "@biomejs/biome": "1.8.3",
-    "@types/jest": "^29.5.12",
-    "jest": "^29.7.0",
-    "ts-jest": "^29.2.5",
-    "typescript": "^5.5.4"
-  },
-  "dependencies": {
-    "dayjs": "^1.11.13"
-  }
+	"name": "mexican-utils",
+	"version": "1.2.1",
+	"description": "library that handles validations for several Mexican related fields",
+	"main": "./dist/index.js",
+	"module": "./dist/index.mjs",
+	"types": "./dist/index.d.ts",
+	"files": ["dist"],
+	"scripts": {
+		"build": "tsup",
+		"test": "jest",
+		"format": "biome format --write ./src",
+		"lint": "biome lint --write ./src"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/NicolasET/mexican-utils.git"
+	},
+	"keywords": ["rfc", "curp"],
+	"author": "Nicolas Escobar Tellez",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/NicolasET/mexican-utils/issues"
+	},
+	"homepage": "https://github.com/NicolasET/mexican-utils#readme",
+	"devDependencies": {
+		"@biomejs/biome": "1.8.3",
+		"@types/jest": "^29.5.12",
+		"jest": "^29.7.0",
+		"ts-jest": "^29.2.5",
+		"ts-node": "^10.9.2",
+		"tsup": "^8.2.4",
+		"typescript": "^5.5.4"
+	},
+	"dependencies": {
+		"dayjs": "^1.11.13"
+	}
 }
