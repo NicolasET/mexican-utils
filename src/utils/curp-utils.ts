@@ -191,7 +191,7 @@ export const replaceBadWords = (word: string): string => {
 	return BAD_WORDS[word.toUpperCase()] || word;
 };
 
-export const getSpecialChar = (birthYear: string) => {
+export const getSpecialChar = (birthYear: string): "0" | "A" => {
 	return birthYear.startsWith("1") ? "0" : "A";
 };
 

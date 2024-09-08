@@ -11,8 +11,13 @@ describe("validateCURP", () => {
 		expect(validateCURP(curp)).toBe(true);
 	});
 
+	test("Should validate a valid CURP", () => {
+		const curp = "LOOA531113HTCPBN07";
+		expect(validateCURP(curp)).toBe(true);
+	});
+
 	test("Should invalidate an invalid CURP", () => {
-		const curp = "INVALIDCURP12345";
+		const curp = "INVALIDCURP1234567";
 		expect(validateCURP(curp)).toBe(false);
 	});
 });

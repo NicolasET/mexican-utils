@@ -36,7 +36,7 @@ export const createCURP = (
 	state: State,
 	birthDate: string | number | Date,
 	maternalSurname = "",
-) => {
+): string => {
 	if (!isValidDate(birthDate)) {
 		throw new Error(
 			"The date of birth is an invalid date or is in an invalid format.",
