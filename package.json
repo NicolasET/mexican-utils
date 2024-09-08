@@ -1,24 +1,24 @@
 {
 	"name": "mexican-utils",
-	"version": "1.3.1",
-	"description": "library that handles validations for several Mexican related fields",
+	"version": "1.3.2",
+	"description": "Library that handles validations for several Mexican related fields",
+	"author": "NicolasET",
+	"license": "MIT",
 	"main": "./dist/index.js",
 	"module": "./dist/index.mjs",
 	"types": "./dist/index.d.ts",
 	"files": ["dist"],
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/NicolasET/mexican-utils.git"
+	},
+	"keywords": ["rfc", "curp"],
 	"scripts": {
 		"build": "tsup",
 		"test": "jest",
 		"format": "biome format --write ./src",
 		"lint": "biome lint --write ./src"
 	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/NicolasET/mexican-utils.git"
-	},
-	"keywords": ["rfc", "curp"],
-	"author": "Nicolas Escobar Tellez",
-	"license": "ISC",
 	"bugs": {
 		"url": "https://github.com/NicolasET/mexican-utils/issues"
 	},
