@@ -1,5 +1,3 @@
-import dayjs from "dayjs";
-import customParseFormat from "dayjs/plugin/customParseFormat";
 import {
 	calculateVerificationDigit,
 	findFirstConsonant,
@@ -16,8 +14,6 @@ import {
 	type State,
 	STATES,
 } from "./utils";
-
-dayjs.extend(customParseFormat);
 
 /**
  * Creates a CURP (Clave Única de Registro de Población) based on the provided
