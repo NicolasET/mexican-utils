@@ -7,7 +7,9 @@ import {
 	GENDERS,
 	getPrimaryName,
 	getSpecialChar,
+	isValidDate,
 	normalizeString,
+	parseDate,
 	removeCompoundWords,
 	replaceBadWords,
 	replaceNonAlphabetic,
@@ -39,7 +41,7 @@ export const createCURP = (
 	birthDate: string | number | Date,
 	maternalSurname = "",
 ) => {
-	if (!dayjs(birthDate, "YYYY-MM-DD", true).isValid()) {
+	if (!isValidDate(birthDate)) {
 		throw new Error(
 			"The date of birth is an invalid date or is in an invalid format.",
 		);
@@ -84,11 +86,7 @@ export const createCURP = (
 		].join(""),
 	);
 
-	const parsedBirthDate = dayjs(birthDate);
-	const day = parsedBirthDate.format("DD");
-	const month = parsedBirthDate.format("MM");
-	const year = parsedBirthDate.format("YY");
-	const fullYear = parsedBirthDate.format("YYYY");
+	const { day, month, year, fullYear } = parseDate(birthDate);
 
 	const incompleteCURP = [
 		firstComposition,
