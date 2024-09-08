@@ -37,6 +37,30 @@ describe("createCURP", () => {
 		expect(curp).toBe("LOOA531113HTCPBN07");
 	});
 
+	test("Should create a valid CURP", () => {
+		const curp = createCURP(
+			"Larisa",
+			"Olvera",
+			"female",
+			"ciudad_de_méxico",
+			new Date("1992-10-24"),
+			"Vargas",
+		);
+		expect(curp).toBe("OEVL921024MDFLRR07");
+	});
+
+	test("Should create a valid CURP", () => {
+		const curp = createCURP(
+			"Nicolás",
+			"Escobar",
+			"male",
+			"no_especificado",
+			Date.parse("1998-11-27"),
+			"Téllez",
+		);
+		expect(curp).toBe("EOTN981127HNESLC06");
+	});
+
 	test("Should create an invalid CURP", () => {
 		const curp = createCURP(
 			"Larisa",

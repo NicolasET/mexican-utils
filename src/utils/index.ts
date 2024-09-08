@@ -94,9 +94,7 @@ export const parseDate = (
 	year: string;
 	fullYear: string;
 } => {
-	const parsedDate = new Date(
-		date instanceof Date ? date : `${date}T00:00:00Z`,
-	); // Append time in UTC
+	const parsedDate = new Date(date instanceof Date ? date.getTime() : date);
 	const day = String(parsedDate.getUTCDate()).padStart(2, "0"); // Get day in UTC
 	const month = String(parsedDate.getUTCMonth() + 1).padStart(2, "0"); // Month is zero-based; get in UTC
 	const year = String(parsedDate.getUTCFullYear()).slice(-2); // Last 2 digits of year
