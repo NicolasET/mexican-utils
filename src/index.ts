@@ -15,6 +15,8 @@ import {
 	STATES,
 } from "./utils";
 
+export type { State } from "./utils";
+
 /**
  * Creates a CURP (Clave Única de Registro de Población) based on the provided
  * personal information and birth date.
